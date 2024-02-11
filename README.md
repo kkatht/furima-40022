@@ -11,7 +11,7 @@
 | first_name         | string | null: false |
 | last_name_kana     | string | null: false |
 | first_name_kana    | string | null: false |
-| birth_date          | date   | null: false |
+| birth_date         | date   | null: false |
 
 
 ### Association
@@ -73,15 +73,15 @@
 - has_one :shipping_address
 
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | postal_code        | string | null: false |
 | prefecture_id      | integer| null: false |
 | city               | string | null: false |
-| addresses          | string | null: false |
-| building           | string | null: true  |
+| address            | string | null: false |
+| building           | string |             |
 | phone_number       | string | null: false |
 | order              | references | null: false, foreign_key: true |
 

@@ -12,8 +12,8 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :birth_date, presence: true
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: "には半角英字と数字の両方を含めて設定してください(全角英字不可)"
   LAST_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
   validates_format_of :last_name, with: LAST_NAME_REGEX, message: 'は全角かなで設定してください' 
   FIRST_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze

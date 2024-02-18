@@ -22,7 +22,6 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        #binding.pry
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailは@を含まないと登録できない' do
@@ -68,7 +67,6 @@ RSpec.describe User, type: :model do
         @user.password = 'ABcd1234'
         @user.password_confirmation = 'ABcd1234'
         @user.valid?
-        #binding.pry
         expect(@user.errors.full_messages).to include("Password には半角英字と数字の両方を含めて設定してください(全角英字不可)")
       end
       it '姓（全角）が空では登録できない' do
@@ -84,7 +82,6 @@ RSpec.describe User, type: :model do
       it '名（全角）が空では登録できない' do
         @user.first_name = ''
         @user.valid?
-      # binding.pry
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it '名（全角）に半角文字が含まれていると登録できない' do
@@ -105,7 +102,6 @@ RSpec.describe User, type: :model do
       it '名（カナ）が空では登録できない' do
         @user.first_name_kana = ''
         @user.valid?
-      # binding.pry
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
       it '名（カナ）に半角文字が含まれていると登録できない' do

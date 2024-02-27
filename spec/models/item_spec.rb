@@ -20,7 +20,6 @@ RSpec.describe Item, type: :model do
       it '画像が空では出品できない' do
         @item.image.detach                
         @item.valid?
-       # binding.pry
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it '商品の説明が空では出品できない' do

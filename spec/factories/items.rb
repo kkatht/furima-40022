@@ -8,7 +8,7 @@ FactoryBot.define do
     prefecture_id          {Faker::Number.between(from: 1, to:47)}
     scheduled_delivery_id  {Faker::Number.between(from: 1, to:3)}
     info                   {Faker::Lorem.paragraph}
-    user_id                {1}
+    association :user
     after(:build) do |item|
       item.image.attach(
         io: File.open(Rails.root.join('spec', 'fixtures', 'sample_image.jpg')),

@@ -130,7 +130,7 @@
       <% if Item.exists? %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to item_path(item.id) do %>
            <div class='item-img-content'>
              <%= image_tag item.image.variant(resize: '500x500'), class: 'item-img' if item.image.attached? %>
     <%# --------------20240303売却済商品へのSold Outの表示（あとで検証）---------------- %>
@@ -147,38 +147,39 @@
     <%# --------------20240303売却済商品へのSold Outの表示（あとで検証）---------------- %>
           </div>
            <div class='item-info'>
-            <h3 class='item-name'>
-             <p><%= item.name %></p>
-            </h3>
-            <div class='item-price'>
-              <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+              <h3 class='item-name'>
+                <p><%= item.name %></p>
+              </h3>
+              <div class='item-price'>
+                <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
               </div>
-            </div>
            </div>
+          <% end %>
           </li>
         <% end %>
       <% else %>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+        <li class='list'>
+          <%= link_to '#' do %>
+            <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                商品を出品してね！
+              </h3>
+              <div class='item-price'>
+                <span>99999999円<br>(税込み)</span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <% end %>
+          <% end %>
+        </li>
       <% end %>
-      </li>
-
     </ul>
   </div>
   <%# /商品一覧 %>

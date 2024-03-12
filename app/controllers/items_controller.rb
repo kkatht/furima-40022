@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
       end
     end
 
+
     def show
     end
 
@@ -37,6 +38,14 @@ class ItemsController < ApplicationController
         render :edit, status: :unprocessable_entity
       end 
     end
+
+
+    def destroy
+        @item = Item.find(params[:id])
+        @item.destroy
+        redirect_to root_path
+    end
+    
 
     def set_item
       @item = Item.find(params[:id])

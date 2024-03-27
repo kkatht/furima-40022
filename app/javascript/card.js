@@ -27,5 +27,5 @@ const pay = () => {
     e.preventDefault();
   });
 };
-
+window.addEventListener("turbo:render", pay);
 window.addEventListener("turbo:load", pay);

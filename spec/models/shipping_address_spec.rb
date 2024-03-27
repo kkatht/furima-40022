@@ -48,8 +48,18 @@ RSpec.describe ShippingAddress, type: :model do
         @shipping_address.valid?
         expect(@shipping_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号は、10桁以上11桁以内の半角数値でないと登録できない' do
-        @shipping_address.phone_number = '10000000'
+      it '電話番号は、9桁以下では購入できない' do
+        @shipping_address.phone_number = '110000000'
+        @shipping_address.valid?
+        expect(@shipping_address.errors.full_messages).to include("Phone number is invalid. ")
+      end
+      it '電話番号は、12桁以上では購入できない' do
+        @shipping_address.phone_number = '110000000111'
+        @shipping_address.valid?
+        expect(@shipping_address.errors.full_messages).to include("Phone number is invalid. ")
+      end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @shipping_address.phone_number = 'aa２aa'
         @shipping_address.valid?
         expect(@shipping_address.errors.full_messages).to include("Phone number is invalid. ")
       end

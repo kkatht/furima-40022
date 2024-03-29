@@ -14,7 +14,8 @@ RSpec.describe OrderShippingAddress, type: :model do
         expect(@order_shipping_address).to be_valid
       end
       it ' 建物名が無くても登録できる'do
-        @order_shipping_address.building = ""
+        @order_shipping_address.building = ''
+        expect(@order_shipping_address).to be_valid
       end
     end
 

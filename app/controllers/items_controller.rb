@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  #before_action :basic_auth
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
 
@@ -26,6 +27,8 @@ class ItemsController < ApplicationController
 
     def edit
       if current_user.id != @item.user_id
+        redirect_to root_path
+      elsif Order.exists?(item_id: @item.id)
         redirect_to root_path
       end
     end 
